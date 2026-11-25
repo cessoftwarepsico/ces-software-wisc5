@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Metadatos principales de SEO para motores de búsqueda -->
+    <title>CES Software — Automatización Psicométrica e Informe en Word (.DOCX) para WISC-V</title>
+    <meta name="description" content="Aplicación de escritorio independiente para Windows (no es Excel) que automatiza la corrección psicométrica, baremos (6:0 a 16:11), perfiles, Curva de Gauss e informe editable en Word (.DOCX) compatible con WISC-V. 100% offline.">
+    <meta name="keywords" content="CES Software, automatización psicométrica, informe WISC-V Word, corrección WISC-V, software psicopedagogía, perfil psicométrico, Curva de Gauss, informe docx, software offline Windows">
+    <meta name="author" content="CES Software">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CES Software — Corrección Psicométrica e Informe en Word en Minutos">
+    <meta property="og:description" content="Software de escritorio independiente (100% offline, no es una hoja de cálculo Excel). Baremos completos 6:0 a 16:11, índices primarios y secundarios, Curva de Gauss y exportación directa a Word (.DOCX).">
+    <meta property="og:site_name" content="CES Software">
+    <meta property="og:locale" content="es_AR">
+
+    <!-- Datos Estructurados Schema.org (SoftwareApplication) para enriquecer resultados en Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CES Software — Automatización Psicométrica e Informe en Word",
+      "operatingSystem": "Windows 10, Windows 11 (64 bits)",
+      "applicationCategory": "BusinessApplication",
+      "description": "Aplicación de escritorio independiente para la corrección psicométrica, cálculo de baremos (6:0 a 16:11), gráficos de perfiles, Curva de Gauss y generación automática de informes editables en Word (.DOCX) compatibles con la escala WISC-V.",
+      "brand": {
+        "@type": "Brand",
+        "name": "CES Software"
+      },
+      "featureList": [
+        "Cálculo exacto de edad cronológica",
+        "Baremos completos 6:0 a 16:11 años",
+        "Índices primarios, CIT e índices secundarios",
+        "Análisis de fortalezas y debilidades",
+        "Gráficos de perfiles y Curva de Gauss",
+        "Exportación directa a Microsoft Word (.DOCX) editable",
+        "Funcionamiento 100% local y offline"
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#08182E',
+                            900: '#0F294A',
+                            800: '#163863',
+                        },
+                        tech: {
+                            600: '#1E63B5',
+                            500: '#2774D1',
+                            100: '#EBF3FC',
+                            50: '#F4F8FD',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-tech-600 selection:text-white">
+
+    <!-- Notificación Toast Flotante (reemplazo limpio sin alert) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 translate-y-4 opacity-0">
+        <div class="bg-navy-900 text-white px-5 py-3.5 rounded-xl shadow-xl border border-slate-700 flex items-center gap-3 max-w-sm">
+            <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="toast-message" class="text-sm font-medium">Acción completada.</span>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-18 py-3.5">
+                <!-- Logo Tipográfico CES Software -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="bg-navy-900 group-hover:bg-tech-600 transition-colors text-white font-extrabold text-base tracking-tight px-2.5 py-1.5 rounded-lg shadow-sm">
+                        CES
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-navy-900 font-bold text-lg leading-none tracking-tight">software</span>
+                        <span class="text-[11px] font-medium text-slate-500 tracking-wider uppercase mt-0.5">Psicometría Clínica</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces de Navegación Desktop -->
+                <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+                    <a href="#diferencial" class="hover:text-tech-600 transition-colors">¿Por qué no Excel?</a>
+                    <a href="#funciones" class="hover:text-tech-600 transition-colors">Características</a>
+                    <a href="#demo-interactiva" class="hover:text-tech-600 transition-colors">Vista Previa</a>
+                    <a href="#licencia" class="hover:text-tech-600 transition-colors">Licencia</a>
+                    <a href="#faq" class="hover:text-tech-600 transition-colors">FAQ</a>
+                </nav>
+
+                <!-- Botones de Acción -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openModal('seoModal')" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-navy-900 bg-slate-100 hover:bg-slate-200/80 px-3 py-2 rounded-lg transition-colors" title="Copiar etiquetas SEO y descripción para publicar">
+                        <svg class="w-4 h-4 text-tech-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Kit SEO
+                    </button>
+                    <button onclick="openModal('contactModal')" class="bg-tech-600 hover:bg-navy-900 text-white text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition-all cursor-pointer">
+                        Solicitar Licencia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main>
+        <section class="relative overflow-hidden bg-gradient-to-b from-navy-950 via-navy-900 to-navy-800 text-white pt-14 pb-20 sm:pt-20 sm:pb-28">
+            <!-- Patrón sutil de fondo -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#60A5FA 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <!-- Etiqueta Superior -->
+                    <div class="inline-flex flex-wrap items-center justify-center gap-2 bg-white/10 border border-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-blue-200 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        APLICACIÓN DE ESCRITORIO PARA WINDOWS · 100% OFFLINE
+                    </div>
+
+                    <!-- Título Principal H1 (Clave para SEO) -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6">
+                        Corrección psicométrica e informe completo en Word <span class="text-blue-300">en minutos</span>
+                    </h1>
+
+                    <!-- Subtítulo -->
+                    <p class="text-base sm:text-xl text-slate-200/90 leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+                        <strong class="text-white font-semibold">CES Software</strong> automatiza el cálculo de edad cronológica, baremos completos (<strong class="text-white font-semibold">6:0 a 16:11</strong>), índices primarios y secundarios, Curva de Gauss y exportación a <strong class="text-white font-semibold">Word (.DOCX) editable</strong> compatible con la escala WISC-V.
+                    </p>
+
+                    <!-- Destacado Visual Clave: NO ES EXCEL -->
+                    <div class="inline-flex items-center gap-2.5 bg-amber-400/15 border border-amber-300/40 text-amber-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide mb-9 shadow-sm">
+                        <svg class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        NO ES UNA PLANTILLA DE EXCEL · SOFTWARE DE ESCRITORIO INDEPENDIENTE
+                    </div>
+
+                    <!-- CTAs Hero -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="openModal('contactModal')" class="w-full sm:w-auto bg-tech-500 hover:bg-tech-600 text-white font-bold text-base px-8 py-4 rounded-xl shadow-lg shadow-blue-950/50 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                            Solicitar Licencia Profesional
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        </button>
+                        <a href="#demo-interactiva" class="w-full sm:w-auto bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-base px-7 py-4 rounded-xl transition-all text-center">
+                            Explorar Interfaz del Programa
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MOCKUP INTERACTIVO DE CES SOFTWARE -->
+                <div id="demo-interactiva" class="mt-14 sm:mt-16 max-w-5xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden text-slate-800">
+                        <!-- Barra de ventana simulada -->
+                        <div class="bg-slate-100 border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                                <span class="ml-2 text-xs font-semibold text-slate-600 hidden sm:inline">CES Software — Evaluación y Perfil Psicométrico (Edición Profesional)</span>
+                            </div>
+                            <span class="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
+                                Modo Local · Sin Internet
+                            </span>
+                        </div>
+
+                        <!-- Cabecera interna de la app simulada -->
+                        <div class="bg-white border-b border-slate-200 px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-tech-600 text-white font-bold text-xs px-2 py-1 rounded">CES</span>
+                                <span class="font-bold text-navy-900 text-base">software</span>
+                            </div>
+                            <!-- Pestañas Interactivas -->
+                            <div class="flex flex-wrap gap-1.5 bg-slate-100 p-1 rounded-xl">
+                                <button onclick="switchDemoTab('datos')" id="tab-btn-datos" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-tech-600 text-white shadow-sm transition-all cursor-pointer">
+                                    1. Carga de Datos y PD
+                                </button>
+                                <button onclick="switchDemoTab('indices')" id="tab-btn-indices" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-navy-900 transition-all cursor-pointer">
+                                    2. Índices y Perfiles
+                                </button>
+                                <button onclick="switchDemoTab('gauss')" id="tab-btn-gauss" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-navy-900 transition-all cursor-pointer">
+                                    3. Curva de Gauss
+                                </button>
+                                <button onclick="switchDemoTab('word')" id="tab-btn-word" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-navy-900 transition-all cursor-pointer">
+                                    4. Informe Word (.DOCX)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Contenido Dinámico de las Pestañas -->
+                        <div class="p-5 sm:p-8 bg-slate-50/70 min-h-[370px]">
+                            
+                            <!-- PESTAÑA 1: Carga de Datos y PD -->
+                            <div id="tab-panel-datos" class="demo-panel space-y-6">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200">
+                                    <div>
+                                        <span class="text-xs font-bold uppercase tracking-wider text-tech-600">Caso de Demostración</span>
+                                        <h3 class="text-base font-bold text-navy-900">Examinando Ejemplo · Edad Cronológica: 11 años, 6 meses y 16 días</h3>
+                                    </div>
+                                    <span class="text-xs font-semibold bg-tech-50 text-tech-600 border border-tech-600/20 px-3 py-1.5 rounded-lg">
+                                        Baremo activo: 11:6 a 11:11 (Automático)
+                                    </span>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                        <h4 class="text-sm font-bold text-navy-900 mb-3 flex items-center justify-between">
+                                            <span>Subpruebas Principales (Carga Rápida)</span>
+                                            <span class="text-xs font-normal text-slate-500">PD → PE / Edad Eq.</span>
+                                        </h4>
+                                        <div class="space-y-2.5 text-sm">
+                                            <div class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                                                <span class="text-slate-700 font-medium">Construcción con cubos (CC)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="bg-slate-100 px-2.5 py-0.5 rounded font-mono text-xs font-semibold">PD: 25</span>
+                                                    <span class="bg-tech-50 text-tech-600 px-2.5 py-0.5 rounded font-bold text-xs">PE: 9</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                                                <span class="text-slate-700 font-medium">Analogías (AN)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="bg-slate-100 px-2.5 py-0.5 rounded font-mono text-xs font-semibold">PD: 11</span>
+                                                    <span class="bg-tech-50 text-tech-600 px-2.5 py-0.5 rounded font-bold text-xs">PE: 5</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                                                <span class="text-slate-700 font-medium">Matrices de razonamiento (MR)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="bg-slate-100 px-2.5 py-0.5 rounded font-mono text-xs font-semibold">PD: 35</span>
+                                                    <span class="bg-tech-50 text-tech-600 px-2.5 py-0.5 rounded font-bold text-xs">PE: 19</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-1.5 border-b border-slate-100">
+                                                <span class="text-slate-700 font-medium">Retención de dígitos (RD)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="bg-slate-100 px-2.5 py-0.5 rounded font-mono text-xs font-semibold">PD: 18</span>
+                                                    <span class="bg-tech-50 text-tech-600 px-2.5 py-0.5 rounded font-bold text-xs">PE: 7</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-1.5">
+                                                <span class="text-slate-700 font-medium">Claves (CLA)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="bg-slate-100 px-2.5 py-0.5 rounded font-mono text-xs font-semibold">PD: 45</span>
+                                                    <span class="bg-tech-50 text-tech-600 px-2.5 py-0.5 rounded font-bold text-xs">PE: 10</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                                        <div>
+                                            <h4 class="text-sm font-bold text-navy-900 mb-3">Configuración Psicométrica</h4>
+                                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                                                    <span class="text-slate-500 block">Intervalo de Confianza</span>
+                                                    <span class="font-bold text-navy-900 text-sm mt-0.5 block">95% (o 90% opcional)</span>
+                                                </div>
+                                                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                                                    <span class="text-slate-500 block">Base de Comparación</span>
+                                                    <span class="font-bold text-navy-900 text-sm mt-0.5 block">CIT / MIP</span>
+                                                </div>
+                                                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                                                    <span class="text-slate-500 block">Nivel de Significación</span>
+                                                    <span class="font-bold text-navy-900 text-sm mt-0.5 block">.05 / .10 / .15</span>
+                                                </div>
+                                                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200/80">
+                                                    <span class="text-slate-500 block">Base de Datos Local</span>
+                                                    <span class="font-bold text-emerald-700 text-sm mt-0.5 block">Guardado en PC</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                            <span class="text-xs text-slate-500">Todos los tramos 6:0 a 16:11 incluidos</span>
+                                            <button onclick="switchDemoTab('indices')" class="text-xs font-bold text-tech-600 hover:text-navy-900 flex items-center gap-1 cursor-pointer">
+                                                Ver resultados calculados →
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PESTAÑA 2: Índices y Perfiles -->
+                            <div id="tab-panel-indices" class="demo-panel hidden space-y-6">
+                                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-center shadow-sm">
+                                        <span class="text-xs font-bold text-slate-500 block">ICV</span>
+                                        <span class="text-2xl font-extrabold text-tech-600 my-1 block">84</span>
+                                        <span class="text-[11px] text-slate-500">Pc 14 · Medio bajo</span>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-center shadow-sm">
+                                        <span class="text-xs font-bold text-slate-500 block">IVE</span>
+                                        <span class="text-2xl font-extrabold text-tech-600 my-1 block">108</span>
+                                        <span class="text-[11px] text-slate-500">Pc 70 · Medio</span>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-center shadow-sm">
+                                        <span class="text-xs font-bold text-slate-500 block">IRF</span>
+                                        <span class="text-2xl font-extrabold text-tech-600 my-1 block">115</span>
+                                        <span class="text-[11px] text-slate-500">Pc 84 · Medio alto</span>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-center shadow-sm">
+                                        <span class="text-xs font-bold text-slate-500 block">IMT</span>
+                                        <span class="text-2xl font-extrabold text-tech-600 my-1 block">88</span>
+                                        <span class="text-[11px] text-slate-500">Pc 21 · Medio bajo</span>
+                                    </div>
+                                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-center shadow-sm">
+                                        <span class="text-xs font-bold text-slate-500 block">IVP</span>
+                                        <span class="text-2xl font-extrabold text-tech-600 my-1 block">109</span>
+                                        <span class="text-[11px] text-slate-500">Pc 73 · Medio</span>
+                                    </div>
+                                    <div class="bg-navy-900 p-3.5 rounded-xl border border-navy-800 text-center shadow-sm text-white">
+                                        <span class="text-xs font-bold text-blue-200 block">CIT (CI Total)</span>
+                                        <span class="text-2xl font-extrabold text-white my-1 block">102</span>
+                                        <span class="text-[11px] text-blue-200">Pc 55 · Medio</span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                                            <thead>
+                                                <tr class="bg-navy-900 text-white">
+                                                    <th class="py-2.5 px-4 font-semibold">Índice Primario / Secundario</th>
+                                                    <th class="py-2.5 px-3 font-semibold text-center">Suma PE</th>
+                                                    <th class="py-2.5 px-3 font-semibold text-center">Compuesto</th>
+                                                    <th class="py-2.5 px-3 font-semibold text-center">Percentil</th>
+                                                    <th class="py-2.5 px-3 font-semibold text-center">IC 95%</th>
+                                                    <th class="py-2.5 px-4 font-semibold">Clasificación</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-100">
+                                                <tr>
+                                                    <td class="py-2 px-4 font-medium text-navy-900">Comprensión Verbal (ICV)</td>
+                                                    <td class="py-2 px-3 text-center">14</td>
+                                                    <td class="py-2 px-3 text-center font-bold">84</td>
+                                                    <td class="py-2 px-3 text-center">14</td>
+                                                    <td class="py-2 px-3 text-center">78 - 92</td>
+                                                    <td class="py-2 px-4 text-slate-600">Medio bajo</td>
+                                                </tr>
+                                                <tr class="bg-slate-50/50">
+                                                    <td class="py-2 px-4 font-medium text-navy-900">Visoespacial (IVE)</td>
+                                                    <td class="py-2 px-3 text-center">23</td>
+                                                    <td class="py-2 px-3 text-center font-bold">108</td>
+                                                    <td class="py-2 px-3 text-center">70</td>
+                                                    <td class="py-2 px-3 text-center">99 - 116</td>
+                                                    <td class="py-2 px-4 text-slate-600">Medio</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-4 font-medium text-navy-900">Razonamiento Fluido (IRF)</td>
+                                                    <td class="py-2 px-3 text-center">25</td>
+                                                    <td class="py-2 px-3 text-center font-bold">115</td>
+                                                    <td class="py-2 px-3 text-center">84</td>
+                                                    <td class="py-2 px-3 text-center">107 - 121</td>
+                                                    <td class="py-2 px-4 text-slate-600">Medio alto</td>
+                                                </tr>
+                                                <tr class="bg-slate-50/50">
+                                                    <td class="py-2 px-4 font-medium text-navy-900">Razonamiento Cuantitativo (IRC)</td>
+                                                    <td class="py-2 px-3 text-center">19</td>
+                                                    <td class="py-2 px-3 text-center font-bold">97</td>
+                                                    <td class="py-2 px-3 text-center">42</td>
+                                                    <td class="py-2 px-3 text-center">90 - 104</td>
+                                                    <td class="py-2 px-4 text-slate-600">Medio</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-4 font-medium text-navy-900">Memoria de Trabajo Auditiva (IMTA)</td>
+                                                    <td class="py-2 px-3 text-center">26</td>
+                                                    <td class="py-2 px-3 text-center font-bold">117</td>
+                                                    <td class="py-2 px-3 text-center">87</td>
+                                                    <td class="py-2 px-3 text-center">109 - 123</td>
+                                                    <td class="py-2 px-4 text-slate-600">Medio alto</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PESTAÑA 3: Curva de Gauss -->
+                            <div id="tab-panel-gauss" class="demo-panel hidden">
+                                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                                    <h4 class="text-base font-bold text-navy-900 mb-1">Curva normal (Curva de Gauss — Media 100, DE 15)</h4>
+                                    <p class="text-xs text-slate-500 mb-4">Generación automática en alta resolución e inserción directa en el informe Word</p>
+                                    
+                                    <!-- Gráfico SVG ilustrativo de la Curva de Gauss con marcador CIT -->
+                                    <div class="max-w-2xl mx-auto">
+                                        <svg viewBox="0 0 600 220" class="w-full h-auto">
+                                            <!-- Zonas sombreadas -->
+                                            <path d="M 225 170 L 225 65 Q 300 12 375 65 L 375 170 Z" fill="#EBF3FC" opacity="0.85"></path>
+                                            <!-- Líneas verticales de desviación -->
+                                            <line x1="90" y1="145" x2="90" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="160" y1="108" x2="160" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="230" y1="62" x2="230" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="300" y1="28" x2="300" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="370" y1="62" x2="370" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="440" y1="108" x2="440" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <line x1="510" y1="145" x2="510" y2="170" stroke="#94A3B8" stroke-dasharray="4 3" stroke-width="1.5"></line>
+                                            <!-- Curva Campana -->
+                                            <path d="M 20 168 C 110 165, 175 110, 225 62 C 258 30, 280 26, 300 26 C 320 26, 342 30, 375 62 C 425 110, 490 165, 580 168" fill="none" stroke="#0F294A" stroke-width="3.5" stroke-linecap="round"></path>
+                                            <!-- Punto CIT marcado -->
+                                            <circle cx="314" cy="28" r="6" fill="#DC2626" stroke="#FFFFFF" stroke-width="2"></circle>
+                                            <rect x="276" y="3" width="76" height="18" rx="4" fill="#DC2626"></rect>
+                                            <text x="314" y="15" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">CIT = 102</text>
+                                            <!-- Etiquetas eje X -->
+                                            <text x="90" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">70</text>
+                                            <text x="160" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">80</text>
+                                            <text x="230" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">90</text>
+                                            <text x="300" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">100</text>
+                                            <text x="370" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">110</text>
+                                            <text x="440" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">120</text>
+                                            <text x="510" y="186" text-anchor="middle" fill="#0F294A" font-size="11" font-weight="bold">130</text>
+                                            <!-- Clasificaciones -->
+                                            <text x="55" y="203" text-anchor="middle" fill="#64748B" font-size="9">Extrem. bajo</text>
+                                            <text x="125" y="203" text-anchor="middle" fill="#64748B" font-size="9">Muy bajo</text>
+                                            <text x="195" y="203" text-anchor="middle" fill="#64748B" font-size="9">Medio-bajo</text>
+                                            <text x="300" y="203" text-anchor="middle" fill="#0F294A" font-size="10" font-weight="bold">Promedio</text>
+                                            <text x="405" y="203" text-anchor="middle" fill="#64748B" font-size="9">Medio-alto</text>
+                                            <text x="475" y="203" text-anchor="middle" fill="#64748B" font-size="9">Muy alto</text>
+                                            <text x="545" y="203" text-anchor="middle" fill="#64748B" font-size="9">Extrem. alto</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PESTAÑA 4: Informe Word (.DOCX) -->
+                            <div id="tab-panel-word" class="demo-panel hidden">
+                                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm max-w-3xl mx-auto">
+                                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-200">
+                                        <div class="flex items-center gap-2">
+                                            <span class="bg-blue-700 text-white text-xs font-bold px-2.5 py-1 rounded">W</span>
+                                            <span class="text-sm font-bold text-navy-900">EXAMINANDO_EJEMPLO_WISC-V_CES.docx</span>
+                                        </div>
+                                        <span class="text-xs font-medium text-slate-500">Tipografía Arial 11 · 100% Editable</span>
+                                    </div>
+                                    <div class="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
+                                        <p class="font-bold text-navy-900 text-sm">CES SOFTWARE — Perfil e informe psicométrico</p>
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-navy-900 text-white p-2.5 rounded-lg text-xs">
+                                            <div><span class="text-blue-200 block">Examinando</span><strong>EJEMPLO</strong></div>
+                                            <div><span class="text-blue-200 block">Edad cronológica</span><strong>11a, 6m, 16d</strong></div>
+                                            <div><span class="text-blue-200 block">Examinador</span><strong>PROFESIONAL</strong></div>
+                                            <div><span class="text-blue-200 block">Formato</span><strong>Word (.DOCX)</strong></div>
+                                        </div>
+                                        <p class="font-bold text-navy-900 pt-1">OBJETO DEL INFORME E INTERPRETACIÓN ESTRUCTURADA</p>
+                                        <p class="text-slate-600">
+                                            El documento generado incluye automáticamente las tablas de puntuaciones directas y escalares, edades equivalentes, puntuaciones de procesamiento, índices primarios y secundarios, análisis de fortalezas y debilidades, gráficos de perfil, Curva de Gauss y lectura clínica orientativa lista para que el profesional revise, personalice y firme.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE DIFERENCIAL: ¿POR QUÉ CES SOFTWARE Y NO UNA PLANILLA DE EXCEL? -->
+        <section id="diferencial" class="py-16 sm:py-24 bg-white border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-xs font-bold uppercase tracking-widest text-tech-600">Diferencial Tecnológico</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-navy-900 mt-2 mb-4">
+                        ¿Por qué CES Software y no una planilla de Excel?
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg">
+                        A diferencia de las hojas de cálculo compartidas o plantillas con macros que suelen desconfigurarse, <strong class="text-navy-900">CES Software</strong> es una aplicación de escritorio independiente compilada para Windows.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Columna Planilla Excel Tradicional -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-lg">
+                                ✕
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-700">Planilla o Plantilla de Excel</h3>
+                                <p class="text-xs text-slate-500">Hojas de cálculo convencionales</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-600">
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-500 font-bold mt-0.5">✕</span>
+                                <span>Riesgo constante de borrar fórmulas por error o desconfigurar celdas al editar.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-500 font-bold mt-0.5">✕</span>
+                                <span>Requiere copiar y pegar tablas y gráficos manualmente hacia Word en cada paciente.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-500 font-bold mt-0.5">✕</span>
+                                <span>Archivos sueltos por carpeta sin un historial ordenado de examinados.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-500 font-bold mt-0.5">✕</span>
+                                <span>Bloqueos por seguridad de macros o incompatibilidades entre versiones de Office.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna CES Software -->
+                    <div class="bg-navy-900 text-white border border-navy-800 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-tech-500 text-white flex items-center justify-center font-bold text-lg">
+                                ✓
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">CES Software (Aplicación Independiente)</h3>
+                                <p class="text-xs text-blue-200">Software de escritorio nativo para Windows</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-100">
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                                <span><strong class="text-white">Interfaz dedicada y protegida:</strong> motor de cálculo blindado; cero riesgo de romper fórmulas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                                <span><strong class="text-white">Exportación directa a Word (.DOCX) Arial 11:</strong> genera el informe completo con un clic.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                                <span><strong class="text-white">Base de datos local de pacientes:</strong> guardá, cargá y consultá casos anteriores en tu PC.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                                <span><strong class="text-white">Gráficos automáticos incluidos:</strong> perfiles escalares, compuestos y Curva de Gauss listos para imprimir.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUNCIONES PRINCIPALES (GRID DE 8 TARJETAS DETALLADAS) -->
+        <section id="funciones" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-xs font-bold uppercase tracking-widest text-tech-600">Precisión y Rapidez Clínica</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-navy-900 mt-2 mb-4">
+                        Todo el flujo psicométrico automatizado de principio a fin
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg">
+                        Diseñado para reducir drásticamente el tiempo administrativo de corrección y redacción sin perder rigor técnico.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Tarjeta 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Edad Cronológica Exacta</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Calcula automáticamente años, meses y días exactos a partir de la fecha de nacimiento y evaluación, seleccionando el tramo correspondiente.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Baremos 6:0 a 16:11</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Conversión instantánea de puntuaciones directas (PD) a puntuaciones escalares (PE) y edades equivalentes en los 22 tramos etarios.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Primarios, CIT y Secundarios</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Calcula ICV, IVE, IRF, IMT, IVP, CIT e índices secundarios (IRC, IMTA, INV, IHG, ICC) con percentil, IC 90%/95% y clasificación.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Puntajes de Procesamiento</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Registro completo de puntuaciones de proceso (CCsb, RDd, RDi, RDs, etc.) con sus respectivas edades equivalentes.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Fortalezas y Debilidades</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Análisis estadístico de puntos fuertes y débiles, comparaciones entre índices (base CIT o MIP) e interpretación textual estructurada.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 6 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Perfiles y Curva de Gauss</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Dibuja automáticamente el perfil de puntuaciones escalares, compuestos y la Curva Normal señalando la posición exacta del CIT.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 7 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">Exportación Word (.DOCX)</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Genera un documento editable de Microsoft Word listo para revisar, adaptar con observaciones clínicas e imprimir o firmar.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta 8 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-tech-50 text-tech-600 flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-navy-900 mb-2">100% Local y Privado</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Funciona sin conexión a internet. Los datos de pacientes y el historial de informes quedan guardados exclusivamente en tu computadora.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE LICENCIA Y REQUISITOS TÉCNICOS -->
+        <section id="licencia" class="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-5xl mx-auto bg-gradient-to-br from-navy-900 to-navy-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-5">
+                            <span class="inline-block bg-tech-500/20 border border-blue-400/30 text-blue-200 text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
+                                Licenciamiento Profesional Transparente
+                            </span>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+                                Licencia de escritorio para tu consultorio
+                            </h2>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Obtené tu licencia oficial de <strong class="text-white">CES Software</strong> con entrega digital inmediata del paquete de instalación y activación personalizada por ID de equipo.
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <span class="text-xs text-blue-200 font-semibold uppercase block">Modalidad de Uso</span>
+                                    <span class="text-base font-bold text-white mt-1 block">1 PC (ID de Equipo)</span>
+                                    <span class="text-xs text-slate-300 mt-1 block">Instalación local sin abonos mensuales.</span>
+                                </div>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-xl">
+                                    <span class="text-xs text-emerald-300 font-semibold uppercase block">Respaldo Incluido</span>
+                                    <span class="text-base font-bold text-white mt-1 block">1 Reactivación Sin Cargo</span>
+                                    <span class="text-xs text-slate-300 mt-1 block">Durante el primer año desde la compra.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 bg-white text-slate-800 rounded-2xl p-6 sm:p-7 shadow-lg">
+                            <h3 class="text-lg font-extrabold text-navy-900 mb-4">Requisitos del Sistema</h3>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-6">
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-2 h-2 rounded-full bg-tech-600"></span>
+                                    <span><strong>Sistema:</strong> Windows 10 o Windows 11 (64 bits).</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-2 h-2 rounded-full bg-tech-600"></span>
+                                    <span><strong>Informes:</strong> Microsoft Word / compatible con .DOCX.</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-2 h-2 rounded-full bg-tech-600"></span>
+                                    <span><strong>Conexión:</strong> Solo para descarga inicial; uso 100% offline.</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <span class="w-2 h-2 rounded-full bg-tech-600"></span>
+                                    <span><strong>Formato:</strong> Programa independiente (no requiere Excel).</span>
+                                </li>
+                            </ul>
+
+                            <div class="space-y-2.5">
+                                <button onclick="openModal('contactModal')" class="w-full bg-tech-600 hover:bg-navy-900 text-white font-bold py-3.5 px-5 rounded-xl transition-colors shadow-sm cursor-pointer">
+                                    Consultar / Solicitar Licencia
+                                </button>
+                                <button onclick="openModal('seoModal')" class="w-full bg-slate-100 hover:bg-slate-200 text-navy-900 font-semibold py-2.5 px-5 rounded-xl text-xs transition-colors cursor-pointer">
+                                    Copiar Ficha y Metadatos SEO
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREGUNTAS FRECUENTES (ACORDEÓN INTERACTIVO) -->
+        <section id="faq" class="py-16 sm:py-24 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-tech-600">Dudas Habituales</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-navy-900 mt-2">
+                        Preguntas Frecuentes
+                    </h2>
+                </div>
+
+                <div class="space-y-3.5" id="faq-accordion">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-navy-900 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <span>¿Es una hoja de cálculo o macro de Excel?</span>
+                            <svg id="faq-icon-1" class="w-5 h-5 text-tech-600 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-content-1" class="px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            <strong>No.</strong> CES Software es una aplicación de escritorio independiente para Windows con su propia interfaz gráfica, base de datos local de pacientes, generación automática de gráficos y exportación directa a Word (.DOCX). No utiliza planillas ni fórmulas de Excel.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-navy-900 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <span>¿Necesito internet para usarlo en el consultorio?</span>
+                            <svg id="faq-icon-2" class="w-5 h-5 text-tech-600 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-content-2" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            No. Una vez descargado y activado en tu PC, funciona <strong>100% offline</strong>. Todos los cálculos, gráficos e informes en Word se procesan localmente en tu equipo, garantizando privacidad y disponibilidad incluso sin conexión a internet.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-navy-900 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <span>¿Qué tramos de edad incluye el baremo?</span>
+                            <svg id="faq-icon-3" class="w-5 h-5 text-tech-600 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-content-3" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Incluye los <strong>22 tramos etarios completos desde 6 años 0 meses (6:0) hasta 16 años 11 meses (16:11)</strong>, además de las tablas de índices primarios, CI Total (CIT), índices secundarios y puntajes de procesamiento.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-navy-900 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <span>¿Incluye manuales, cuadernillos o materiales físicos de la prueba?</span>
+                            <svg id="faq-icon-4" class="w-5 h-5 text-tech-600 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-content-4" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            No. CES Software es exclusivamente una herramienta informática de apoyo para la tabulación, graficación y estructuración del informe. No incluye manuales, cuadernillos, estímulos ni materiales originales protegidos de terceros; el profesional debe contar con su propio material oficial de administración.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(5)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-navy-900 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <span>¿Cómo funciona la licencia por ID de equipo y la reactivación sin cargo?</span>
+                            <svg id="faq-icon-5" class="w-5 h-5 text-tech-600 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="faq-content-5" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Al abrir el programa por primera vez en tu computadora, el sistema genera un código identificador único (ID de equipo) con el cual se emite tu clave de activación para 1 PC. Además, la licencia incluye <strong>1 reactivación sin cargo durante el primer año</strong> desde la compra en caso de formateo o cambio de equipo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER Y ACLARACIÓN PROFESIONAL -->
+    <footer class="bg-navy-950 text-slate-300 pt-14 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-800/80">
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center gap-2.5">
+                        <span class="bg-tech-600 text-white font-extrabold text-sm px-2.5 py-1 rounded-lg">CES</span>
+                        <span class="text-white font-bold text-lg tracking-tight">software</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+                        Desarrollo propio de herramientas informáticas de escritorio para psicometría y automatización de informes profesionales en Windows.
+                    </p>
+                </div>
+
+                <div class="md:col-span-7 bg-white/5 border border-white/10 rounded-2xl p-5">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-blue-200 mb-2">Aclaración Ética y Profesional</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        <strong>CES Software</strong> es una herramienta informática independiente de apoyo diseñada para agilizar el cálculo psicométrico, la graficación de perfiles y la redacción estructurada de informes. No incluye manuales, cuadernillos, láminas ni materiales originales protegidos de terceros. La correcta administración de la escala, la validez de las puntuaciones ingresadas y la interpretación clínica, psicopedagógica o educativa corresponden exclusivamente al profesional matriculado o habilitado.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <span>© 2026 CES Software. Todos los derechos reservados.</span>
+                <span>Aplicación de escritorio Windows · Exportación Microsoft Word (.DOCX)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: SOLICITAR LICENCIA / CONSULTA -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden bg-navy-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeModal('contactModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1.5 rounded-lg cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="mb-5">
+                <span class="text-xs font-bold uppercase tracking-wider text-tech-600">CES Software · Licencia 1 PC</span>
+                <h3 class="text-xl font-extrabold text-navy-900 mt-1">Solicitar Licencia o Consultar</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Completá tus datos para preparar tu mensaje de consulta y recibir el paquete de instalación y activación.
+                </p>
+            </div>
+
+            <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Nombre / Profesión</label>
+                    <input type="text" id="inq-name" required placeholder="Ej. Lic. Ana Gómez — Psicopedagoga" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-tech-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Sistema Operativo</label>
+                    <select id="inq-os" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-tech-600 bg-white">
+                        <option value="Windows 11 (64 bits)">Windows 11 (64 bits)</option>
+                        <option value="Windows 10 (64 bits)">Windows 10 (64 bits)</option>
+                        <option value="Otro / Consultar compatibilidad">Otro / Consultar compatibilidad</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-navy-900 mb-1">Consulta adicional (opcional)</label>
+                    <textarea id="inq-notes" rows="2" placeholder="Ej. Quisiera adquirir una licencia para mi consultorio..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-tech-600"></textarea>
+                </div>
+
+                <div class="pt-2 flex flex-col gap-2">
+                    <button type="submit" class="w-full bg-tech-600 hover:bg-navy-900 text-white font-bold py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer">
+                        Copiar Mensaje Listo para Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: KIT SEO PARA COPIAR Y PEGAR EN TIENDA / WEB -->
+    <div id="seoModal" class="fixed inset-0 z-50 hidden bg-navy-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('seoModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1.5 rounded-lg cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="mb-5">
+                <span class="text-xs font-bold uppercase tracking-wider text-tech-600">Optimización para Buscadores</span>
+                <h3 class="text-xl font-extrabold text-navy-900 mt-1">Kit SEO de CES Software</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                    Copiá estos textos optimizados para configurar el SEO en tu tienda online (Tiendanube, web propia o Google Search Console).
+                </p>
+            </div>
+
+            <div class="space-y-4 text-sm">
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-navy-900">Título SEO de Página (Meta Title)</label>
+                        <button onclick="copyTextById('seo-title-box', 'Título SEO copiado')" class="text-xs font-semibold text-tech-600 hover:underline cursor-pointer">Copiar</button>
+                    </div>
+                    <textarea id="seo-title-box" readonly rows="1" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700">CES Software — Automatización Psicométrica e Informe en Word (.DOCX) WISC-V</textarea>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-navy-900">Meta Descripción (Google Snippet)</label>
+                        <button onclick="copyTextById('seo-desc-box', 'Meta descripción copiada')" class="text-xs font-semibold text-tech-600 hover:underline cursor-pointer">Copiar</button>
+                    </div>
+                    <textarea id="seo-desc-box" readonly rows="3" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700">Aplicación de escritorio independiente para Windows (no es Excel) que automatiza la corrección psicométrica, baremos (6:0 a 16:11), perfiles, Curva de Gauss e informe editable en Word (.DOCX) compatible con WISC-V. 100% offline.</textarea>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="text-xs font-bold text-navy-900">Palabras Clave Recomendadas</label>
+                        <button onclick="copyTextById('seo-kw-box', 'Palabras clave copiadas')" class="text-xs font-semibold text-tech-600 hover:underline cursor-pointer">Copiar</button>
+                    </div>
+                    <textarea id="seo-kw-box" readonly rows="2" class="w-full p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700">CES Software, automatización psicométrica, informe WISC-V Word, corrección WISC-V, software psicopedagogía, perfil psicométrico, Curva de Gauss, informe docx, software offline Windows</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // Cambio de pestañas en el mockup interactivo
+        function switchDemoTab(tabName) {
+            const panels = document.querySelectorAll('.demo-panel');
+            panels.forEach(p => p.classList.add('hidden'));
+
+            const buttons = document.querySelectorAll('.demo-tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-tech-600', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activePanel = document.getElementById('tab-panel-' + tabName);
+            const activeBtn = document.getElementById('tab-btn-' + tabName);
+            if (activePanel) activePanel.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-600');
+                activeBtn.classList.add('bg-tech-600', 'text-white', 'shadow-sm');
+            }
+        }
+
+        // Acordeón de Preguntas Frecuentes
+        function toggleFaq(index) {
+            const content = document.getElementById('faq-content-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            const isHidden = content.classList.contains('hidden');
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Control de Modales
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        }
+
+        // Notificación Toast sin usar alert()
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            const messageEl = document.getElementById('toast-message');
+            messageEl.textContent = msg;
+            toast.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            });
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3200);
+        }
+
+        // Copiar al portapapeles compatible con iframe
+        function copyToClipboardFallback(text, successMsg) {
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast('No se pudo copiar automáticamente.');
+            }
+            document.body.removeChild(temp);
+        }
+
+        function copyTextById(elementId, successMsg) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            el.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                copyToClipboardFallback(el.value, successMsg);
+            }
+        }
+
+        // Formulario de solicitud de licencia
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('inq-name').value.trim();
+            const os = document.getElementById('inq-os').value;
+            const notes = document.getElementById('inq-notes').value.trim();
+
+            const message = `Hola, me interesa adquirir una licencia de CES Software (Automatización Psicométrica e Informe en Word).\n• Profesional: ${name}\n• Sistema operativo: ${os}${notes ? '\n• Consulta: ' + notes : ''}`;
+            copyToClipboardFallback(message, 'Consulta copiada. Pegala en WhatsApp o correo.');
+            closeModal('contactModal');
+        }
+    </script>
+</body>
+</html>
